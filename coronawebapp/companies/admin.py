@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Companies
+from .models import Company
 
 # Register your models here.
-@admin.register(Companies)
+@admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
     pass

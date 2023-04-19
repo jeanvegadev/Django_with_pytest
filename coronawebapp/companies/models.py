@@ -3,7 +3,7 @@ from django.db.models import URLField
 from django.utils.timezone import now
 
 # Create your models here.
-class Companies(models.Model):
+class Company(models.Model):
     class CompanyStatus(models.TextChoices):
         LAYOFFS = "Layoffs"
         HIRING_FREEZE = "Hiring Freeze"
