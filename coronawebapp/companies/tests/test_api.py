@@ -75,10 +75,37 @@ class TestPostCompanies(BasicCompanyApiTestCase):
         self.assertIn("WrongStatus", str(response.content))
         self.assertIn("is not a valid choice", str(response.content))
 
-    @pytest.mark.xfail
-    def test_should_be_xfail(self)->None:
-        self.assertEqual(1,2)
+@pytest.mark.xfail
+def test_should_be_xfail()->None:
+    assert 1 == 2
 
-    @pytest.mark.skip
-    def test_should_be_skipped(self)->None:
-        self.assertEqual(1,1)
+@pytest.mark.skip
+def test_should_be_skipped()->None:
+    assert 1 == 1
+    
+def raise_covid19_exception()->None:
+    raise ValueError("Covid19-Error")
+    
+def test_raise_covid19_exception_should_be_pass()->None:
+    with pytest.raises(ValueError) as e:
+        raise_covid19_exception()
+    assert "Covid19-Error" == str(e.value)
+
+import logging
+
+logger = logging.getLogger("CORONA_LOGS")
+
+def function_that_logs_something()-> None:
+    try:
+        raise ValueError("CoronaVirusException")
+    except ValueError as e:
+        logger.warning(f"I am logging in {str(e)}")
+
+def test_logged_warning_level(caplog)->None:
+    function_that_logs_something()
+    assert "I am logging in CoronaVirusException" in caplog.text
+
+def test_logged_info_level(caplog)->None:
+    with caplog.at_level(logging.INFO):
+        logger.info("I am loggin at info level")
+        assert "I am loggin at info level" in caplog.text
