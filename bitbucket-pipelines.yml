@@ -13,5 +13,6 @@ pipelines:
           - pipenv install --system
           - export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
           - echo $PYTHONPATH
+          - echo $PWD
           - pytest coronawebapp/ -v -s --durations=0
           
