@@ -1,0 +1,13 @@
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+image: python:3.9.0
+pipelines:
+  default:
+    - step:
+        name: Django Company Test
+        caches:
+          - pip
+        script:
+          - pip install pipenv --upgrade
+          - pipenv install --system
+          - piptest coronawebapp/ -v -s --durations=0
