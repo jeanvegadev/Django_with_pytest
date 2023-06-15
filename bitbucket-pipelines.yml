@@ -3,6 +3,7 @@
 image: python:3.9.0
 pipelines:
   branches:
+    'main':
     - step:
         name: Django Company Test
         caches:
