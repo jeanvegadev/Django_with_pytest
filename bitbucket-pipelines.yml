@@ -11,4 +11,7 @@ pipelines:
         script:
           - pip install pipenv --upgrade
           - pipenv install --system
+          - export PYTHONPATH=$PYTHONPATH:$PYTHONPATH/api/coronavstech
+          - echo $PYTHONPATH
           - pytest coronawebapp/ -v -s --durations=0
+          
