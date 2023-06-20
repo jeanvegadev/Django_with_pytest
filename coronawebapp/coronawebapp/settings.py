@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django.contrib.staticfiles',
     'companies.apps.CompaniesConfig',
+    'fibonacci.apps.FibonacciConfig'
 ]
 
 MIDDLEWARE = [
