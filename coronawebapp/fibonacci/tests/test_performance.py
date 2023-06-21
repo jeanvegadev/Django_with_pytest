@@ -7,7 +7,7 @@ from time import sleep
 @pytest.mark.performance
 @track_performance
 def test_performance():
-    sleep(3)
+    # sleep(3)
     fibonacci_dynamic(1000)
 
 
